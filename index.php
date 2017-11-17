@@ -21,21 +21,13 @@ try{
 
     if ($params_arr[1]){
 
-        $func = $params_arr[1];
-        array_pop($params_arr);
-        array_pop($params_arr);
-
-
         if (preg_match('/^\/[a-zA-Z]+\/?$/', $request_uri)){
 
             call_user_func_array([new IndexController(), "category"], $params_arr);
 
-        }else{
-
-            call_user_func_array([new IndexController(), $func], $params_arr);
+        }else if (preg_match('/^\/[a-zA-Z]+\/?$/', $request_uri)){
 
         }
-
 
     }else{
         call_user_func_array([new IndexController(), 'index'], []);
